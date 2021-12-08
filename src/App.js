@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import {Paper, TextField} from "@mui/material";
+import {useState} from "react";
+import order from "./order"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [str, setStr] = useState('')
+
+    return (
+        <div className="App">
+            <Paper
+                variant="outlined"
+                sx={{
+                    width: '450px',
+                    textAlign: 'center',
+                    color: 'secondary',
+                    lineHeight: '60px',
+                    padding: '20px'
+                }}
+                className="paper"
+            >
+
+                <TextField
+                    id="outlined-basic"
+                    label="Input"
+                    fullWidth
+                    multiline
+                    maxRows={4}
+                    onChange={e => setStr(e.target.value)}
+                    variant="outlined"/>
+
+                {order(str)}
+            </Paper>
+
+        </div>
+    );
 }
 
 export default App;
